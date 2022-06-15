@@ -10,17 +10,7 @@ Just follow the instructions, fill in the gaps and run it. Or customize it for y
 
 # Run it
 
-## Post-merge ropsten
-
-1. Clone this repo
-2. Create empty dirs for erigon (`<erigon-data-dir>`) and prysm (`<prysm-data-dir>`) databases
-3. Run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker-compose -f ropsten.yml up`
-4. Wait 1-2 days until the archive node finishes syncing ropsten
-5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
-
-> Remember that ropsten is deprecated and will have no more upgrades after the merge
-
-## Sepolia
+## Sepolia testnet
 
 1. Clone this repo
 2. Create an empty dir for erigon (`<erigon-data-dir>`) database
@@ -29,3 +19,13 @@ Just follow the instructions, fill in the gaps and run it. Or customize it for y
 5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
 
 > This script will be updated soon as clients gets updated to the upcoming sepolia merge
+
+## Post-merge ropsten testnet
+
+1. Clone this repo
+2. Create empty dirs for erigon (`<erigon-data-dir>`) and prysm (`<prysm-data-dir>`) databases
+3. Run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker-compose -f ropsten.yml up`
+4. Wait 1-2 days until the archive node finishes syncing ropsten
+5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
+
+> Remember that ropsten is deprecated and will have no more upgrades after the merge
