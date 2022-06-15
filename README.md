@@ -8,6 +8,19 @@ Just follow the instructions, fill in the gaps and run it. Or customize it for y
 
 > The twitter 🧵 that originated this project: https://twitter.com/wmitsuda/status/1535148383555530757
 
+# How much disk space does it take?
+
+As of Jun/2022.
+
+## Sepolia testnet
+
+- 1.5GB for Erigon sepolia archive
+
+## Post-merge ropsten testnet
+
+- 260GB for Erigon ropsten archive
+- 1GB for Prysm ropsten beacon chain
+
 # Run it
 
 ## Sepolia testnet
