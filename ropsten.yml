@@ -15,15 +15,23 @@ services:
         target: /data
     depends_on:
       - "erigon"
+    restart: unless-stopped
+    mem_swappiness: 0
   erigon:
     image: otterscan/erigon:v2022.06.04-otterscan
     command: erigon --chain=ropsten --datadir=/erigon-data --torrent.download.slots=7 --http --http.api="eth,net,web3,erigon,debug,ots,engine" --ws --http.corsdomain="*" --http.addr="0.0.0.0" --engine.addr="erigon" --http.vhosts='*'
     ports:
       - "8545:8545"
+      - "30303:30303/tcp"
+      - "30303:30303/udp"
+      - "42069:42069/tcp"
+      - "42069:42069/udp"
     volumes:
       - type: bind
         source: "${ERIGON_DATA}"
         target: /erigon-data
+    restart: unless-stopped
+    mem_swappiness: 0
   otterscan:
     image: otterscan/otterscan:v2022.04.01-otterscan
     ports:
@@ -31,4 +39,5 @@ services:
     depends_on:
       - "prysm"
       - "erigon"
+    restart: unless-stopped
 
