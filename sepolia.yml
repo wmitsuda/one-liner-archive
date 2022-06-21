@@ -17,6 +17,8 @@ services:
       - "erigon"
     restart: unless-stopped
     mem_swappiness: 0
+    profiles:
+      - donotstartbynow
   erigon:
     image: otterscan/erigon:v2022.06.06-otterscan
     command: erigon --chain=sepolia --datadir=/erigon-data --torrent.download.slots=7 --http --http.api="eth,net,erigon,ots,engine" --ws --http.corsdomain="*" --http.addr="0.0.0.0" --engine.addr="erigon" --http.vhosts='*'
@@ -37,6 +39,6 @@ services:
     ports:
       - "3000:80"
     depends_on:
-      - "prysm"
+      # - "prysm"
       - "erigon"
     restart: unless-stopped
