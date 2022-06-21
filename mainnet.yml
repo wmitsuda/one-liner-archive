@@ -21,4 +21,3 @@ services:
     depends_on:
       - "erigon"
     restart: unless-stopped
-
