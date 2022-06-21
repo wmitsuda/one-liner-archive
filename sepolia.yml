@@ -1,4 +1,22 @@
 services:
+  prysm:
+    image: gcr.io/prysmaticlabs/prysm/beacon-chain:v2.1.3-rc.4
+    command: --datadir=/data --rpc-host=0.0.0.0 --monitoring-host=0.0.0.0 --http-web3provider=http://erigon:8551 --sepolia --jwt-secret=/erigon-data/jwt.hex --accept-terms-of-use
+    ports:
+      - "4000:4000"
+      - "13000:13000"
+      - "12000:12000/udp"
+    volumes:
+      - type: bind
+        source: "${ERIGON_DATA}"
+        target: /erigon-data
+      - type: bind
+        source: "${PRYSM_DATA}"
+        target: /data
+    depends_on:
+      - "erigon"
+    restart: unless-stopped
+    mem_swappiness: 0
   erigon:
     image: otterscan/erigon:v2022.06.06-otterscan
     command: erigon --chain=sepolia --datadir=/erigon-data --torrent.download.slots=7 --http --http.api="eth,net,erigon,ots,engine" --ws --http.corsdomain="*" --http.addr="0.0.0.0" --engine.addr="erigon" --http.vhosts='*'
@@ -19,6 +37,6 @@ services:
     ports:
       - "3000:80"
     depends_on:
+      - "prysm"
       - "erigon"
     restart: unless-stopped
-
