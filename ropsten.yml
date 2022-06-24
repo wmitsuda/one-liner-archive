@@ -18,7 +18,7 @@ services:
     restart: unless-stopped
     mem_swappiness: 0
   erigon:
-    image: otterscan/erigon:v2022.06.06-otterscan
+    image: otterscan/erigon:v2022.06.06-2-otterscan
     command: erigon --chain=ropsten --datadir=/erigon-data --torrent.download.slots=7 --http --http.api="eth,net,web3,erigon,debug,ots,engine" --ws --http.corsdomain="*" --http.addr="0.0.0.0" --engine.addr="erigon" --http.vhosts='*'
     ports:
       - "8545:8545"
