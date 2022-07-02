@@ -26,8 +26,8 @@ As of Jun/2022.
 ## Sepolia testnet
 
 1. Clone this repo
-2. Create an empty dir for erigon (`<erigon-data-dir>`) database
-3. Run: `ERIGON_DATA="<erigon-data-dir>" docker-compose -f sepolia.yml up`
+2. Create empty dirs for erigon (`<erigon-data-dir>`) and prysm (`<prysm-data-dir>`) databases
+3. Run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker-compose -f sepolia.yml up`
 4. Wait a few hours until the archive node finishes syncing sepolia
 5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
 
