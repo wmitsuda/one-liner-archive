@@ -1,7 +1,7 @@
 services:
   erigon:
     image: otterscan/erigon:v2022.07.01-otterscan
-    command: erigon --datadir=/erigon-data --torrent.download.slots=7 --http --http.api="eth,net,erigon,ots,engine" --ws --http.corsdomain="*" --http.addr="0.0.0.0" --engine.addr="erigon" --http.vhosts='*'
+    command: erigon --datadir=/erigon-data --torrent.download.slots=7 --http.api="eth,net,erigon,ots,engine" --ws --http.corsdomain="*" --http.addr="0.0.0.0" --engine.addr="erigon" --http.vhosts='*'
     ports:
       - "8545:8545"
       - "30303:30303/tcp"
