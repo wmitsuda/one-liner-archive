@@ -2,7 +2,7 @@
 
 Do you want to run an archive node + block explorer in your machine using only 1 command and (_almost_) no devops knowledge?
 
-This repo provides a series of pre-configured docker-compose files that spin-up a Prysm (consensus layer client) + Erigon (execution layer archive node; alpha series) + Otterscan (block explorer).
+This repo provides a series of pre-configured docker compose files that spin-up a Prysm (consensus layer client) + Erigon (execution layer archive node; alpha series) + Otterscan (block explorer).
 
 Just follow the instructions, fill in the gaps and run it. Or customize it for your needs. Or improve it and contribute it back, it's all opensource.
 
@@ -27,7 +27,7 @@ As of Jun/2022.
 
 1. Clone this repo
 2. Create empty dirs for erigon (`<erigon-data-dir>`) and prysm (`<prysm-data-dir>`) databases
-3. Run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker-compose -f sepolia.yml up`
+3. Run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker compose -f sepolia.yml up`
 4. Wait a few hours until the archive node finishes syncing sepolia
 5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
 
@@ -37,7 +37,7 @@ As of Jun/2022.
 
 1. Clone this repo
 2. Create empty dirs for erigon (`<erigon-data-dir>`) and prysm (`<prysm-data-dir>`) databases
-3. Run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker-compose -f ropsten.yml up`
+3. Run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker compose -f ropsten.yml up`
 4. Wait 1-2 days until the archive node finishes syncing ropsten
 5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
 
