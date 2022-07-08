@@ -1,6 +1,6 @@
 services:
   prysm:
-    image: gcr.io/prysmaticlabs/prysm/beacon-chain:v2.1.3-rc.4
+    image: gcr.io/prysmaticlabs/prysm/beacon-chain:v2.1.3
     command: --datadir=/data --rpc-host=0.0.0.0 --monitoring-host=0.0.0.0 --http-web3provider=http://erigon:8551 --sepolia --jwt-secret=/erigon-data/jwt.hex --accept-terms-of-use --terminal-total-difficulty-override=17000000000000000 --genesis-state=/genesis.ssz
     ports:
       - "4000:4000"
