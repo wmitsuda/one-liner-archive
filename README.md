@@ -16,12 +16,16 @@ As of Jun/2022.
 
 - 1.5GB for Erigon sepolia archive
 
-## Post-merge ropsten testnet
+## Ropsten testnet (deprecated)
 
 - 260GB for Erigon ropsten archive
 - 1GB for Prysm ropsten beacon chain
 
 # Run it
+
+## Requirements
+
+- Docker compose V2 (see: https://stackoverflow.com/a/66516826/49530)
 
 ## Sepolia testnet
 
@@ -31,9 +35,7 @@ As of Jun/2022.
 4. Wait a few hours until the archive node finishes syncing sepolia
 5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
 
-> This script will be updated soon as clients gets updated to the upcoming sepolia merge
-
-## Post-merge ropsten testnet
+## Ropsten testnet (deprecated)
 
 1. Clone this repo
 2. Create empty dirs for erigon (`<erigon-data-dir>`) and prysm (`<prysm-data-dir>`) databases
