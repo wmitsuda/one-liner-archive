@@ -17,6 +17,11 @@ As of Jul/2022.
 - 2.1GB for Erigon sepolia archive
 - 320MB for Prysm sepolia beacon chain
 
+## Goerli testnet
+
+- ???GB for Erigon goerli archive
+- ?GB for Prysm prater beacon chain
+
 ## Ropsten testnet (deprecated)
 
 - 266GB for Erigon ropsten archive
@@ -34,6 +39,14 @@ As of Jul/2022.
 2. Create empty dirs for erigon (`<erigon-data-dir>`) and prysm (`<prysm-data-dir>`) databases
 3. On `/sepolia` directory, run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker compose up`
 4. Wait a few hours until the archive node finishes syncing sepolia
+5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
+
+## Goerli testnet
+
+1. Clone this repo
+2. Create empty dirs for erigon (`<erigon-data-dir>`) and prysm (`<prysm-data-dir>`) databases
+3. Run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker compose -f goerli.yml up`
+4. Wait ??? days until the archive node finishes syncing goerli
 5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
 
 ## Ropsten testnet (deprecated)
