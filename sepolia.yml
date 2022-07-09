@@ -45,4 +45,3 @@ services:
 configs:
   genesis.ssz:
     file: ./genesis-sepolia.ssz
-
