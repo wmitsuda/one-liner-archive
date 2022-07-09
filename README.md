@@ -10,16 +10,17 @@ Just follow the instructions, fill in the gaps and run it. Or customize it for y
 
 # How much disk space does it take?
 
-As of Jun/2022.
+As of Jul/2022.
 
 ## Sepolia testnet
 
-- 1.5GB for Erigon sepolia archive
+- 2.1GB for Erigon sepolia archive
+- 320MB for Prysm sepolia beacon chain
 
 ## Ropsten testnet (deprecated)
 
-- 260GB for Erigon ropsten archive
-- 1GB for Prysm ropsten beacon chain
+- 266GB for Erigon ropsten archive
+- 4.3GB for Prysm ropsten beacon chain
 
 # Run it
 
