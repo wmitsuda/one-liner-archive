@@ -32,7 +32,7 @@ As of Jul/2022.
 
 1. Clone this repo
 2. Create empty dirs for erigon (`<erigon-data-dir>`) and prysm (`<prysm-data-dir>`) databases
-3. Run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker compose -f sepolia.yml up`
+3. On `/sepolia` directory, run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker compose up`
 4. Wait a few hours until the archive node finishes syncing sepolia
 5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
 
@@ -40,7 +40,7 @@ As of Jul/2022.
 
 1. Clone this repo
 2. Create empty dirs for erigon (`<erigon-data-dir>`) and prysm (`<prysm-data-dir>`) databases
-3. Run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker compose -f ropsten.yml up`
+3. On `/ropsten` diretory, run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker compose up`
 4. Wait 1-2 days until the archive node finishes syncing ropsten
 5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
 
