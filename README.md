@@ -17,6 +17,11 @@ As of Jul/2022.
 - 2.1GB for Erigon sepolia archive
 - 320MB for Prysm sepolia beacon chain
 
+## Sepolia testnet (akula + lighthouse)
+
+- 2.5GB for Akula sepolia archive
+- 1.0GB for Lighthouse sepolia beacon chain
+
 ## Ropsten testnet (deprecated)
 
 - 266GB for Erigon ropsten archive
@@ -35,6 +40,20 @@ As of Jul/2022.
 3. On `/sepolia` directory, run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker compose up`
 4. Wait a few hours until the archive node finishes syncing sepolia
 5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
+
+## Sepolia testnet (akula + lighthouse **** HIGHLY EXPERIMENTAL ****)
+
+1. Clone this repo
+2. Create empty dirs for akula (`<akula-data-dir>`) and lighthouse (`<lighthouse-data-dir>`) databases
+3. On `/sepolia-akula-lighthouse` directory, run: `LIGHTHOUSE_DATA="<lighthouse-data-dir>" AKULA_DATA="<akula-data-dir>" docker compose up`
+4. Wait a few hours until the archive node finishes syncing sepolia
+5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
+
+### Updating the local akula image
+
+Akula has no stable releases or tags so far, so we build an in-place docker image during the service start process. It is pinned to a pre-defined git commit hash.
+
+That means if the `Dockerfile` gets updated, you need to manually run on `/sepolia-akula-lighthouse` directory: `LIGHTHOUSE_DATA="<lighthouse-data-dir>" AKULA_DATA="<akula-data-dir>" docker compose build`
 
 ## Ropsten testnet (deprecated)
 

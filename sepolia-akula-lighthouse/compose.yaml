@@ -1,0 +1,39 @@
+services:
+  lighthouse:
+    image: sigp/lighthouse:v2.3.2-rc.0-modern
+    command: lighthouse beacon_node --network sepolia --eth1-endpoints "http://akula:8545" --execution-endpoints "http://akula:8551" --datadir /data
+    ports:
+      - "9000:9000"
+      - "9000:9000/udp"
+    volumes:
+      - type: bind
+        source: "${LIGHTHOUSE_DATA}"
+        target: /data
+    depends_on:
+      - "akula"
+    restart: unless-stopped
+    mem_swappiness: 0
+  akula:
+    build:
+      context: .
+    command: akula --chain=sepolia --datadir=/akula-data --rpc-listen-address "0.0.0.0:8545" --engine-listen-address "0.0.0.0:8551"
+    ports:
+      - "8545:8545"
+      - "30303:30303"
+      - "30303:30303/udp"
+      - "42069:42069"
+      - "42069:42069/udp"
+    volumes:
+      - type: bind
+        source: "${AKULA_DATA}"
+        target: /akula-data
+    restart: unless-stopped
+    mem_swappiness: 0
+  otterscan:
+    image: otterscan/otterscan:v2022.04.01-otterscan
+    ports:
+      - "3000:80"
+    depends_on:
+      - "lighthouse"
+      - "akula"
+    restart: unless-stopped
