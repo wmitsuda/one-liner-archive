@@ -12,9 +12,11 @@ ENV PATH="$PATH:/root/.nvm/versions/node/v16.3.0/bin"
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="$PATH:/root/.cargo/bin"
 
-RUN git clone https://github.com/wmitsuda/akula.git /akula
+RUN git clone https://github.com/akula-bft/akula.git /akula
 WORKDIR /akula
-RUN git checkout 9fb7ceb4f7edc6933a8c624e676afd8a1e0d29d2 && cargo fetch
+
+# checkout pinned akula commit; no stable tagged releases yet
+RUN git checkout 8d00b15be8ed791b82f1a342b36e7ab823744a35 && cargo fetch
 RUN cargo build --bin akula --profile=production
 
 FROM fedora:36
