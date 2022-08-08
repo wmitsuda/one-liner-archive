@@ -7,7 +7,7 @@ RUN dnf install -y git clang cmake e2fsprogs e2fsprogs-devel protobuf-compiler p
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="$PATH:/root/.cargo/bin"
 
-ENV GIT_COMMIT='c5694cda658880898953187ba52d6249e37527ad'
+ENV GIT_COMMIT='57aeaa6f2709d3a04ae6b21b1bb5187b1adec496'
 RUN git clone https://github.com/akula-bft/akula.git /akula
 WORKDIR /akula
 
