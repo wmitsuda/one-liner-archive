@@ -20,8 +20,8 @@ services:
     configs:
       - genesis.ssz
   erigon:
-    image: otterscan/erigon:v2022.07.04-otterscan
-    command: erigon --chain=sepolia --datadir=/erigon-data --torrent.download.slots=7 --http.api="eth,net,erigon,ots,engine" --ws --http.corsdomain="*" --http.addr="0.0.0.0" --engine.addr="erigon" --http.vhosts='*'
+    image: otterscan/erigon:v2022.08.01-otterscan
+    command: erigon --chain=sepolia --datadir=/erigon-data --torrent.download.slots=7 --http.api="eth,net,erigon,ots" --ws --http.corsdomain="*" --http.addr="0.0.0.0" --http.vhosts='*' --authrpc.addr="erigon" --authrpc.vhosts="erigon"
     ports:
       - "8545:8545"
       - "30303:30303/tcp"
