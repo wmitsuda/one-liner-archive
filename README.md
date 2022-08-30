@@ -60,7 +60,7 @@ Akula has no stable releases or tags so far, so we build an in-place docker imag
 
 That means if the `Dockerfile` gets updated, you need to manually run on `/sepolia-akula-lighthouse` directory: `LIGHTHOUSE_DATA="<lighthouse-data-dir>" AKULA_DATA="<akula-data-dir>" docker compose build`
 
-## Sepolia testnet
+## Goerli testnet
 
 1. Clone this repo
 2. Create empty dirs for erigon (`<erigon-data-dir>`) and prysm (`<prysm-data-dir>`) databases
