@@ -1,7 +1,7 @@
 services:
   prysm:
     image: gcr.io/prysmaticlabs/prysm/beacon-chain:v3.0.0
-    command: --datadir=/data --rpc-host=0.0.0.0 --monitoring-host=0.0.0.0 --http-web3provider=http://erigon:8551 --goerli --jwt-secret=/erigon-data/jwt.hex --accept-terms-of-use --genesis-state=/genesis.ssz --grpc-gateway-host="0.0.0.0" --grpc-gateway-corsdomain='*' --checkpoint-sync-url=https://goerli.checkpoint-sync.ethdevops.io --genesis-beacon-api-url=https://goerli.checkpoint-sync.ethdevops.io
+    command: --datadir=/data --rpc-host=0.0.0.0 --monitoring-host=0.0.0.0 --execution-endpoint=http://erigon:8551 --goerli --jwt-secret=/erigon-data/jwt.hex --accept-terms-of-use --genesis-state=/genesis.ssz --grpc-gateway-host="0.0.0.0" --grpc-gateway-corsdomain='*' --checkpoint-sync-url=https://goerli.checkpoint-sync.ethdevops.io --genesis-beacon-api-url=https://goerli.checkpoint-sync.ethdevops.io
     ports:
       - "3500:3500"
       - "13000:13000"
