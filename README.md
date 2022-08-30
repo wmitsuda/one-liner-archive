@@ -10,7 +10,7 @@ Just follow the instructions, fill in the gaps and run it. Or customize it for y
 
 # How much disk space does it take?
 
-As of Jul/2022.
+As of Aug/2022.
 
 ## Sepolia testnet
 
@@ -21,6 +21,11 @@ As of Jul/2022.
 
 - 2.5GB for Akula sepolia archive
 - 1.0GB for Lighthouse sepolia beacon chain
+
+## Goerli testnet
+
+- 188GB for Erigon goerli archive
+- 286MB for Prysm goerli beacon chain (checkpoint sync)
 
 ## Ropsten testnet (deprecated)
 
@@ -54,6 +59,14 @@ As of Jul/2022.
 Akula has no stable releases or tags so far, so we build an in-place docker image during the service start process. It is pinned to a pre-defined git commit hash.
 
 That means if the `Dockerfile` gets updated, you need to manually run on `/sepolia-akula-lighthouse` directory: `LIGHTHOUSE_DATA="<lighthouse-data-dir>" AKULA_DATA="<akula-data-dir>" docker compose build`
+
+## Sepolia testnet
+
+1. Clone this repo
+2. Create empty dirs for erigon (`<erigon-data-dir>`) and prysm (`<prysm-data-dir>`) databases
+3. On `/goerli` directory, run: `PRYSM_DATA="<prysm-data-dir>" ERIGON_DATA="<erigon-data-dir>" docker compose up`
+4. Wait 1-2 days until the archive node finishes syncing goerli
+5. You should be able to access Otterscan block explorer to browse your archive by accessing: http://localhost:3000/
 
 ## Ropsten testnet (deprecated)
 

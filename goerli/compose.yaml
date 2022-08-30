@@ -1,0 +1,47 @@
+services:
+  prysm:
+    image: gcr.io/prysmaticlabs/prysm/beacon-chain:v3.0.0
+    command: --datadir=/data --rpc-host=0.0.0.0 --monitoring-host=0.0.0.0 --http-web3provider=http://erigon:8551 --goerli --jwt-secret=/erigon-data/jwt.hex --accept-terms-of-use --genesis-state=/genesis.ssz --grpc-gateway-host="0.0.0.0" --grpc-gateway-corsdomain='*' --checkpoint-sync-url=https://goerli.checkpoint-sync.ethdevops.io --genesis-beacon-api-url=https://goerli.checkpoint-sync.ethdevops.io
+    ports:
+      - "3500:3500"
+      - "13000:13000"
+      - "12000:12000/udp"
+    volumes:
+      - type: bind
+        source: "${ERIGON_DATA}"
+        target: /erigon-data
+      - type: bind
+        source: "${PRYSM_DATA}"
+        target: /data
+    depends_on:
+      - "erigon"
+    restart: unless-stopped
+    mem_swappiness: 0
+    configs:
+      - genesis.ssz
+  erigon:
+    image: otterscan/erigon:v2022.08.03-otterscan
+    command: erigon --chain=goerli --datadir=/erigon-data --torrent.download.slots=7 --http.api="eth,net,erigon,ots" --ws --http.corsdomain="*" --http.addr="0.0.0.0" --http.vhosts='*' --authrpc.addr="erigon" --authrpc.vhosts="erigon"
+    ports:
+      - "8545:8545"
+      - "30303:30303/tcp"
+      - "30303:30303/udp"
+      - "42069:42069/tcp"
+      - "42069:42069/udp"
+    volumes:
+      - type: bind
+        source: "${ERIGON_DATA}"
+        target: /erigon-data
+    restart: unless-stopped
+    mem_swappiness: 0
+  otterscan:
+    image: otterscan/otterscan:v2022.04.01-otterscan
+    ports:
+      - "3000:80"
+    depends_on:
+      - "prysm"
+      - "erigon"
+    restart: unless-stopped
+configs:
+  genesis.ssz:
+    file: ./genesis.ssz
