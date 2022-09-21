@@ -34,6 +34,8 @@ services:
     mem_swappiness: 0
   otterscan:
     image: otterscan/otterscan:v2022.08.03-otterscan
+    environment:
+      - BEACON_API_URL=http://localhost:3500
     ports:
       - "3000:80"
     depends_on:
