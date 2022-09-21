@@ -1,6 +1,24 @@
 services:
+  prysm:
+    image: gcr.io/prysmaticlabs/prysm/beacon-chain:v3.1.1
+    command: --datadir=/data --rpc-host=0.0.0.0 --monitoring-host=0.0.0.0 --execution-endpoint=http://erigon:8551 --jwt-secret=/erigon-data/jwt.hex --accept-terms-of-use --grpc-gateway-host="0.0.0.0" --grpc-gateway-corsdomain='*' --checkpoint-sync-url=https://beaconstate.info/ --genesis-beacon-api-url=https://beaconstate.info/
+    ports:
+      - "3500:3500"
+      - "13000:13000"
+      - "12000:12000/udp"
+    volumes:
+      - type: bind
+        source: "${ERIGON_DATA}"
+        target: /erigon-data
+      - type: bind
+        source: "${PRYSM_DATA}"
+        target: /data
+    depends_on:
+      - "erigon"
+    restart: unless-stopped
+    mem_swappiness: 0
   erigon:
-    image: otterscan/erigon:v2022.08.03-otterscan
+    image: otterscan/erigon:v2022.09.03-otterscan
     command: erigon --datadir=/erigon-data --torrent.download.slots=7 --http.api="eth,net,erigon,ots" --ws --http.corsdomain="*" --http.addr="0.0.0.0" --http.vhosts='*' --authrpc.addr="erigon" --authrpc.vhosts="erigon"
     ports:
       - "8545:8545"
@@ -15,9 +33,10 @@ services:
     restart: unless-stopped
     mem_swappiness: 0
   otterscan:
-    image: otterscan/otterscan:v2022.04.01-otterscan
+    image: otterscan/otterscan:v2022.08.03-otterscan
     ports:
       - "3000:80"
     depends_on:
+      - "prysm"
       - "erigon"
     restart: unless-stopped
